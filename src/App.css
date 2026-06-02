@@ -1,0 +1,863 @@
+:root {
+  --bg: #f6f0e7;
+  --paper: #fffaf2;
+  --dark: #1d261f;
+  --green: #273f32;
+  --gold: #b99355;
+  --goldLight: #ead6ad;
+  --text: #66645d;
+  --muted: #908b80;
+  --white: #ffffff;
+  --radius: 30px;
+  --shadow: 0 28px 80px rgba(29, 38, 31, 0.14);
+
+  --hero-natural-height: 66.7vw;
+  --hero-height: max(100svh, var(--hero-natural-height));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--bg);
+  color: var(--dark);
+  font-family: Inter, Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+}
+
+.page {
+  min-height: 100vh;
+  overflow-x: clip;
+  overflow-y: visible;
+  background: var(--bg);
+}
+
+/* NAVBAR */
+
+.nav {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1180px, calc(100% - 32px));
+  height: 72px;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px 0 26px;
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  background: rgba(255, 250, 242, 0.74);
+  backdrop-filter: blur(24px);
+  border-radius: 999px;
+  color: var(--dark);
+  box-shadow: 0 18px 60px rgba(29, 38, 31, 0.12);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brand strong {
+  font-family: Georgia, serif;
+  font-size: 1.16rem;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+
+.brand span {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 0.9rem;
+  color: #4f564f;
+}
+
+.navLinks a {
+  transition: color 0.25s ease;
+}
+
+.navLinks a:hover {
+  color: var(--gold);
+}
+
+.navCta {
+  padding: 13px 22px;
+  border-radius: 999px;
+  background: var(--green);
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: 0.25s ease;
+}
+
+.navCta:hover {
+  transform: translateY(-2px);
+  background: #1f3328;
+}
+
+.menuButton {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: var(--dark);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.mobileMenu {
+  position: fixed;
+  z-index: 59;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(420px, calc(100% - 32px));
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 26px;
+  background: rgba(255, 250, 242, 0.96);
+  color: var(--dark);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.mobileMenu a {
+  padding: 15px 16px;
+  border-radius: 16px;
+  background: rgba(39, 63, 50, 0.08);
+}
+
+/* HERO CLEAN */
+
+.hero {
+  height: var(--hero-height);
+  min-height: 100svh;
+  position: sticky;
+  top: calc(100svh - var(--hero-height));
+  z-index: 1;
+  background: var(--dark);
+  overflow: hidden;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.heroShade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(29, 38, 31, 0.02) 0%,
+      rgba(29, 38, 31, 0.02) 48%,
+      rgba(29, 38, 31, 0.42) 100%
+    );
+  pointer-events: none;
+}
+
+.heroTitleWrap {
+  position: absolute;
+  top: 0;
+  left: 7vw;
+  right: 7vw;
+  z-index: 2;
+  height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 82px;
+  pointer-events: none;
+}
+
+.hero h1 {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  font-family: Georgia, serif;
+  font-weight: 400;
+  color: white;
+  font-size: clamp(4.6rem, 11vw, 10.8rem);
+  line-height: 0.86;
+  letter-spacing: -0.075em;
+  text-shadow: 0 18px 50px rgba(0, 0, 0, 0.26);
+  will-change: transform, opacity;
+}
+
+/* CONTENT */
+
+.contentShell {
+  position: relative;
+  z-index: 20;
+  margin-top: 0;
+  border-radius: 38px 38px 0 0;
+  background: var(--bg);
+  box-shadow: 0 -18px 55px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+
+.section {
+  padding: 120px 7vw;
+}
+
+.container {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.kicker {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.74rem;
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+.kicker.light {
+  color: var(--goldLight);
+}
+
+.title {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 0.98;
+}
+
+.lead {
+  color: var(--text);
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+.lightTitle {
+  color: white;
+}
+
+/* INTRO */
+
+.villaIntro {
+  background: var(--bg);
+}
+
+.introLayout {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 72px;
+  align-items: end;
+  margin-bottom: 72px;
+}
+
+.introCopy .title {
+  max-width: 760px;
+}
+
+.introCopy .lead {
+  margin-top: 28px;
+  max-width: 640px;
+}
+
+.introPanel {
+  background: var(--paper);
+  border: 1px solid rgba(39, 63, 50, 0.08);
+  border-radius: 34px;
+  padding: 36px;
+  box-shadow: 0 24px 70px rgba(29, 38, 31, 0.08);
+}
+
+.introPanel p {
+  color: var(--text);
+  line-height: 1.85;
+  font-size: 1.02rem;
+}
+
+.introStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  overflow: hidden;
+  border-radius: 24px;
+  margin-top: 34px;
+  background: rgba(39, 63, 50, 0.12);
+}
+
+.introStats div {
+  background: white;
+  padding: 24px 20px;
+}
+
+.introStats strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+
+.introStats span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.introImageGrid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.introImage {
+  overflow: hidden;
+  border-radius: 34px;
+  box-shadow: var(--shadow);
+}
+
+.introImage img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s ease;
+}
+
+.introImage:hover img {
+  transform: scale(1.045);
+}
+
+.introImage.large,
+.introImage.small {
+  height: 620px;
+}
+
+/* APARTMENTS */
+
+.apartmentsSection {
+  background: var(--paper);
+}
+
+.sectionHeader {
+  max-width: 840px;
+  margin-bottom: 56px;
+}
+
+.apartmentsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.apartmentCard {
+  background: white;
+  border-radius: 34px;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(29, 38, 31, 0.1);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.apartmentCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 34px 90px rgba(29, 38, 31, 0.16);
+}
+
+.apartmentImage {
+  position: relative;
+  height: 390px;
+  overflow: hidden;
+  background: var(--dark);
+}
+
+.apartmentPhoto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.75s ease, transform 0.9s ease;
+}
+
+.apartmentPhotoMain {
+  z-index: 1;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.apartmentPhotoHover {
+  z-index: 2;
+  opacity: 0;
+  transform: scale(1.035);
+}
+
+.apartmentCard:hover .apartmentPhotoMain {
+  opacity: 0;
+  transform: scale(1.055);
+}
+
+.apartmentCard:hover .apartmentPhotoHover {
+  opacity: 1;
+  transform: scale(1.055);
+}
+
+.apartmentImage span {
+  position: absolute;
+  z-index: 3;
+  top: 22px;
+  left: 22px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 250, 242, 0.92);
+  color: var(--dark);
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  font-weight: 800;
+}
+
+.apartmentBody {
+  padding: 34px;
+}
+
+.apartmentLabel {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.apartmentBody h3 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 4vw, 4.2rem);
+  letter-spacing: -0.055em;
+  line-height: 0.94;
+  margin-bottom: 22px;
+}
+
+.apartmentBody p:not(.apartmentLabel) {
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.apartmentSpecs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 28px 0 30px;
+}
+
+.apartmentSpecs span {
+  padding: 13px 14px;
+  border-radius: 16px;
+  background: #f6f0e7;
+  color: var(--green);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.simpleLink {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  color: var(--dark);
+  font-weight: 900;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 4px;
+  transition: color 0.25s ease;
+}
+
+.simpleLink:hover {
+  color: var(--gold);
+}
+
+/* EXPERIENCE */
+
+.experienceSection {
+  background:
+    radial-gradient(circle at top left, rgba(234, 214, 173, 0.18), transparent 36%),
+    var(--green);
+  color: white;
+}
+
+.experienceLayout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.experienceText p {
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 1.08rem;
+  line-height: 1.85;
+  max-width: 640px;
+}
+
+.serviceList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.serviceItem {
+  min-height: 112px;
+  display: flex;
+  align-items: flex-end;
+  padding: 22px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.28s ease, background 0.28s ease;
+}
+
+.serviceItem:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.serviceItem span {
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+
+/* TERRITORY */
+
+.territorySection {
+  background: var(--bg);
+}
+
+.territoryLayout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.territoryImage {
+  height: 650px;
+  overflow: hidden;
+  border-radius: 36px;
+  box-shadow: var(--shadow);
+}
+
+.territoryImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s ease;
+}
+
+.territoryImage:hover img {
+  transform: scale(1.045);
+}
+
+.territoryContent {
+  background: var(--paper);
+  border-radius: 36px;
+  padding: clamp(30px, 5vw, 54px);
+  box-shadow: 0 24px 70px rgba(29, 38, 31, 0.08);
+}
+
+.territoryContent .lead {
+  margin-top: 28px;
+}
+
+.territoryList {
+  display: grid;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.territoryList div {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.territoryList strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.territoryList span {
+  display: block;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* BOOKING */
+
+.bookingSection {
+  padding: 120px 7vw;
+  background:
+    linear-gradient(rgba(29, 38, 31, 0.78), rgba(29, 38, 31, 0.78)),
+    url("/villa-antonio.jpg") center/cover no-repeat;
+  color: white;
+}
+
+.bookingPanel {
+  text-align: center;
+}
+
+.bookingPanel .title {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.bookingPanel p:not(.kicker) {
+  max-width: 620px;
+  margin: 28px auto 0;
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.8;
+}
+
+.bookingCards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 320px));
+  justify-content: center;
+  gap: 18px;
+  margin-top: 46px;
+}
+
+.bookingCard {
+  display: grid;
+  gap: 10px;
+  text-align: left;
+  padding: 26px;
+  border-radius: 28px;
+  background: rgba(255, 250, 242, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  transition: transform 0.28s ease, background 0.28s ease;
+}
+
+.bookingCard:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 250, 242, 0.18);
+}
+
+.bookingCard span {
+  color: var(--goldLight);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 900;
+}
+
+.bookingCard strong {
+  font-family: Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+}
+
+.bookingCard small {
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.95rem;
+}
+
+/* FOOTER */
+
+.footer {
+  padding: 48px 7vw;
+  background: var(--dark);
+  color: white;
+}
+
+.footerInner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.footer h3 {
+  font-family: Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.footer p,
+.footer a {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.94rem;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 980px) {
+  .navLinks,
+  .navCta {
+    display: none;
+  }
+
+  .menuButton {
+    display: block;
+  }
+
+  .introLayout,
+  .introImageGrid,
+  .experienceLayout,
+  .territoryLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .apartmentsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .introImage.large,
+  .introImage.small,
+  .territoryImage {
+    height: 430px;
+  }
+
+  .serviceList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bookingCards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .nav {
+    height: 66px;
+    top: 12px;
+    width: calc(100% - 20px);
+    padding: 0 16px;
+  }
+
+  .brand strong {
+    font-size: 1rem;
+  }
+
+  .brand span {
+    font-size: 0.62rem;
+  }
+
+  .hero {
+    height: 100svh;
+    min-height: 620px;
+    position: relative;
+    top: auto;
+    overflow: hidden;
+  }
+
+  .heroImage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .heroShade {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(29, 38, 31, 0.03) 0%,
+        rgba(29, 38, 31, 0.02) 45%,
+        rgba(29, 38, 31, 0.48) 100%
+      );
+  }
+
+  .heroTitleWrap {
+    left: 20px;
+    right: 20px;
+    height: 100svh;
+    padding-bottom: 54px;
+  }
+
+  .hero h1 {
+    font-size: clamp(4rem, 18vw, 6.5rem);
+  }
+
+  .contentShell {
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .section,
+  .bookingSection {
+    padding: 84px 20px;
+  }
+
+  .title {
+    font-size: clamp(2.55rem, 12vw, 4rem);
+  }
+
+  .introPanel,
+  .territoryContent,
+  .apartmentBody {
+    padding: 24px;
+  }
+
+  .introStats,
+  .apartmentSpecs,
+  .serviceList {
+    grid-template-columns: 1fr;
+  }
+
+  .introImage.large,
+  .introImage.small,
+  .territoryImage,
+  .apartmentImage {
+    height: 330px;
+  }
+
+  .footerInner {
+    flex-direction: column;
+  }
+}
