@@ -58,7 +58,7 @@ const services = [
   "Wi-Fi gratuito",
   "Aria condizionata",
   "Alloggi indipendenti",
-  "A pochi minuti da Alghero",
+  "Parcheggio privato",
 ];
 
 function FadeIn({ children, delay = 0, className = "" }) {
