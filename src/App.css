@@ -128,34 +128,126 @@ button {
 
 .menuButton {
   display: none;
-  background: transparent;
+  width: 44px;
+  height: 44px;
   border: 0;
-  color: var(--dark);
-  font-weight: 800;
+  border-radius: 999px;
+  background: var(--green);
+  color: white;
   cursor: pointer;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuButton span {
+  position: absolute;
+  width: 18px;
+  height: 2px;
+  border-radius: 99px;
+  background: currentColor;
+  transition: transform 0.28s ease, top 0.28s ease;
+}
+
+.menuButton span:first-child {
+  top: 17px;
+}
+
+.menuButton span:last-child {
+  top: 25px;
+}
+
+.menuButton.isOpen span:first-child {
+  top: 21px;
+  transform: rotate(45deg);
+}
+
+.menuButton.isOpen span:last-child {
+  top: 21px;
+  transform: rotate(-45deg);
+}
+
+.mobileMenuOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  padding: 96px 14px 14px;
+  background: rgba(29, 38, 31, 0.28);
+  backdrop-filter: blur(10px);
 }
 
 .mobileMenu {
-  position: fixed;
-  z-index: 59;
-  top: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(420px, calc(100% - 32px));
+  width: 100%;
+  min-height: 360px;
   display: grid;
-  gap: 8px;
-  padding: 16px;
-  border-radius: 26px;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 30px;
   background: rgba(255, 250, 242, 0.96);
   color: var(--dark);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.56);
+}
+
+.mobileMenuTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 4px 14px;
+  margin-bottom: 4px;
+}
+
+.mobileMenuTop span {
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  letter-spacing: -0.04em;
+}
+
+.mobileMenuTop small {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.65rem;
+  font-weight: 800;
 }
 
 .mobileMenu a {
-  padding: 15px 16px;
-  border-radius: 16px;
-  background: rgba(39, 63, 50, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 58px;
+  padding: 0 18px;
+  border-radius: 18px;
+  background: rgba(39, 63, 50, 0.07);
+  color: var(--dark);
+  font-family: Georgia, serif;
+  font-size: 1.45rem;
+  letter-spacing: -0.035em;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.mobileMenu a span {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  font-weight: 900;
+}
+
+.mobileMenu a:active {
+  transform: scale(0.985);
+  background: rgba(39, 63, 50, 0.12);
+}
+
+.mobileMenu .mobileMenuCta {
+  margin-top: 8px;
+  justify-content: center;
+  background: var(--green);
+  color: white;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  font-weight: 900;
 }
 
 /* HERO CLEAN */
@@ -754,7 +846,7 @@ button {
   }
 
   .menuButton {
-    display: block;
+    display: flex;
   }
 
   .introLayout,
@@ -785,19 +877,28 @@ button {
 
 @media (max-width: 620px) {
   .nav {
-    height: 66px;
-    top: 12px;
-    width: calc(100% - 20px);
-    padding: 0 16px;
-  }
+  height: 64px;
+  top: 12px;
+  width: calc(100% - 20px);
+  padding: 0 10px 0 18px;
+  background: rgba(255, 250, 242, 0.82);
+  border-color: rgba(255, 255, 255, 0.62);
+}
 
-  .brand strong {
-    font-size: 1rem;
-  }
+.brand strong {
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
 
-  .brand span {
-    font-size: 0.62rem;
-  }
+.brand span {
+  margin-top: 5px;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+}
+
+.menuButton {
+  display: flex;
+}
 
   .hero {
     height: 100svh;

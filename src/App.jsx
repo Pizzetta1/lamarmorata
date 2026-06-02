@@ -126,35 +126,61 @@ export default function App() {
           Prenota
         </a>
 
-        <button className="menuButton" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? "Chiudi" : "Menu"}
-        </button>
+        <button
+  className={`menuButton ${menuOpen ? "isOpen" : ""}`}
+  onClick={() => setMenuOpen(!menuOpen)}
+  aria-label={menuOpen ? "Chiudi menu" : "Apri menu"}
+>
+  <span />
+  <span />
+</button>
       </header>
 
       {menuOpen && (
-        <motion.nav
-          className="mobileMenu"
-          initial={{ opacity: 0, y: -12, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.28 }}
-        >
-          <a href="#villa" onClick={() => setMenuOpen(false)}>
-            La Villa
-          </a>
-          <a href="#appartamenti" onClick={() => setMenuOpen(false)}>
-            Appartamenti
-          </a>
-          <a href="#servizi" onClick={() => setMenuOpen(false)}>
-            Servizi
-          </a>
-          <a href="#posizione" onClick={() => setMenuOpen(false)}>
-            Posizione
-          </a>
-          <a href="#prenota" onClick={() => setMenuOpen(false)}>
-            Prenota
-          </a>
-        </motion.nav>
-      )}
+  <motion.div
+    className="mobileMenuOverlay"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.25 }}
+  >
+    <motion.nav
+      className="mobileMenu"
+      initial={{ opacity: 0, y: -18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="mobileMenuTop">
+        <span>Menu</span>
+        <small>Villa Antonio</small>
+      </div>
+
+      <a href="#villa" onClick={() => setMenuOpen(false)}>
+        <span>01</span>
+        La Villa
+      </a>
+
+      <a href="#appartamenti" onClick={() => setMenuOpen(false)}>
+        <span>02</span>
+        Appartamenti
+      </a>
+
+      <a href="#servizi" onClick={() => setMenuOpen(false)}>
+        <span>03</span>
+        Servizi
+      </a>
+
+      <a href="#posizione" onClick={() => setMenuOpen(false)}>
+        <span>04</span>
+        Posizione
+      </a>
+
+      <a href="#prenota" onClick={() => setMenuOpen(false)} className="mobileMenuCta">
+        Prenota ora
+      </a>
+    </motion.nav>
+  </motion.div>
+)}
 
       <Hero />
 
