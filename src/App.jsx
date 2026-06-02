@@ -79,6 +79,7 @@ function FadeIn({ children, delay = 0, className = "" }) {
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const isMobile = window.matchMedia("(max-width: 767px)").matches;
@@ -105,9 +106,22 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+  const handleScroll = () => {
+    setIsScrolled(window.scrollY > 40);
+  };
+
+  handleScroll();
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
+
   return (
     <main className="page">
-      <header className="nav">
+      <header className={`nav ${isScrolled || menuOpen ? "isScrolled" : ""}`}>
         <a href="#" className="brand" onClick={() => setMenuOpen(false)}>
           <strong>NURAS Villa Antonio</strong>
           <span>Santa Maria la Palma</span>

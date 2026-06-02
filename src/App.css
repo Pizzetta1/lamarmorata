@@ -56,22 +56,36 @@ button {
 
 .nav {
   position: fixed;
-  top: 18px;
+  top: 14px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(1180px, calc(100% - 32px));
-  height: 72px;
+  width: min(1080px, calc(100% - 42px));
+  height: 60px;
   z-index: 60;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 18px 0 26px;
-  border: 1px solid rgba(255, 255, 255, 0.44);
-  background: rgba(255, 250, 242, 0.74);
-  backdrop-filter: blur(24px);
+  padding: 0 12px 0 22px;
+  border: 1px solid transparent;
+  background: transparent;
+  backdrop-filter: blur(0px);
   border-radius: 999px;
+  color: white;
+  box-shadow: none;
+  transition:
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    backdrop-filter 0.35s ease;
+}
+
+.nav.isScrolled {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 250, 242, 0.72);
+  backdrop-filter: blur(18px);
   color: var(--dark);
-  box-shadow: 0 18px 60px rgba(29, 38, 31, 0.12);
+  box-shadow: 0 12px 34px rgba(29, 38, 31, 0.1);
 }
 
 .brand {
@@ -82,24 +96,34 @@ button {
 
 .brand strong {
   font-family: Georgia, serif;
-  font-size: 1.16rem;
-  letter-spacing: 0.02em;
+  font-size: 1.02rem;
+  letter-spacing: 0.01em;
   font-weight: 500;
 }
 
 .brand span {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 0.72rem;
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.62rem;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
+  transition: color 0.35s ease;
+}
+
+.nav.isScrolled .brand span {
+  color: var(--muted);
 }
 
 .navLinks {
   display: flex;
   align-items: center;
-  gap: 28px;
-  font-size: 0.9rem;
+  gap: 22px;
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.86);
+  transition: color 0.35s ease;
+}
+
+.nav.isScrolled .navLinks {
   color: #4f564f;
 }
 
@@ -112,13 +136,24 @@ button {
 }
 
 .navCta {
-  padding: 13px 22px;
+  padding: 10px 17px;
   border-radius: 999px;
-  background: var(--green);
+  background: rgba(255, 255, 255, 0.12);
   color: white;
+  border: 1px solid rgba(255, 255, 255, 0.34);
   font-weight: 700;
-  font-size: 0.9rem;
-  transition: 0.25s ease;
+  font-size: 0.82rem;
+  transition:
+    transform 0.25s ease,
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.nav.isScrolled .navCta {
+  background: rgba(39, 63, 50, 0.92);
+  color: white;
+  border-color: transparent;
 }
 
 .navCta:hover {
@@ -128,16 +163,29 @@ button {
 
 .menuButton {
   display: none;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border: 0;
   border-radius: 999px;
-  background: var(--green);
+  background: rgba(255, 255, 255, 0.12);
   color: white;
   cursor: pointer;
   position: relative;
   align-items: center;
   justify-content: center;
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    transform 0.25s ease;
+}
+
+.nav.isScrolled .menuButton {
+  background: rgba(39, 63, 50, 0.92);
+  color: white;
+}
+
+.menuButton:hover {
+  transform: scale(1.04);
 }
 
 .menuButton span {
@@ -877,13 +925,22 @@ button {
 
 @media (max-width: 620px) {
   .nav {
-  height: 64px;
-  top: 12px;
-  width: calc(100% - 20px);
-  padding: 0 10px 0 18px;
-  background: rgba(255, 250, 242, 0.82);
-  border-color: rgba(255, 255, 255, 0.62);
-}
+    height: 56px;
+    top: 10px;
+    width: calc(100% - 24px);
+    padding: 0 9px 0 15px;
+    background: transparent;
+    border-color: transparent;
+    backdrop-filter: blur(0px);
+    box-shadow: none;
+  }
+
+  .nav.isScrolled {
+    background: rgba(255, 250, 242, 0.72);
+    border-color: rgba(255, 255, 255, 0.46);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 10px 30px rgba(29, 38, 31, 0.08);
+  }
 
 .brand strong {
   font-size: 1rem;
@@ -896,6 +953,21 @@ button {
   letter-spacing: 0.18em;
 }
 
+.nav:not(.isScrolled) .brand strong {
+  color: white;
+}
+
+.nav:not(.isScrolled) .brand span {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.nav.isScrolled .brand strong {
+  color: var(--dark);
+}
+
+.nav.isScrolled .brand span {
+  color: var(--muted);
+}
 .menuButton {
   display: flex;
 }
