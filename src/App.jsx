@@ -282,6 +282,16 @@ function VillaIntro() {
 }
 
 function ApartmentsSection() {
+  const [activeApartment, setActiveApartment] = useState(null);
+
+  const activateApartment = (name) => {
+    setActiveApartment(name);
+  };
+
+  const deactivateApartment = () => {
+    setActiveApartment(null);
+  };
+
   return (
     <section className="section apartmentsSection" id="appartamenti">
       <div className="container">
@@ -297,24 +307,33 @@ function ApartmentsSection() {
         <div className="apartmentsGrid">
           {apartments.map((apartment, index) => (
             <FadeIn key={apartment.name} delay={index * 0.12}>
-              <article className="apartmentCard">
+              <article
+                className={`apartmentCard ${
+                  activeApartment === apartment.name ? "isTouchActive" : ""
+                }`}
+                onTouchStart={() => activateApartment(apartment.name)}
+                onTouchMove={() => activateApartment(apartment.name)}
+                onTouchEnd={deactivateApartment}
+                onTouchCancel={deactivateApartment}
+              >
                 <div className="apartmentImage">
-  <img
-    src={apartment.image}
-    alt={`NURAS Villa Antonio ${apartment.name}`}
-    className="apartmentPhoto apartmentPhotoMain"
-  />
+                  <img
+                    src={apartment.image}
+                    alt={`NURAS Villa Antonio ${apartment.name}`}
+                    className="apartmentPhoto apartmentPhotoMain"
+                  />
 
-  {apartment.hoverImage && (
-    <img
-      src={apartment.hoverImage}
-      alt={`Seconda foto ${apartment.name}`}
-      className="apartmentPhoto apartmentPhotoHover"
-    />
-  )}
+                  {apartment.hoverImage && (
+                    <img
+                      src={apartment.hoverImage}
+                      alt={`Seconda foto ${apartment.name}`}
+                      className="apartmentPhoto apartmentPhotoHover"
+                    />
+                  )}
 
-  <span>{apartment.number}</span>
-</div>
+                  <span>{apartment.number}</span>
+                </div>
+
                 <div className="apartmentBody">
                   <p className="apartmentLabel">NURAS Villa Antonio</p>
                   <h3>{apartment.name}</h3>

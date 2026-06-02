@@ -424,12 +424,14 @@ button {
   transform: scale(1.035);
 }
 
-.apartmentCard:hover .apartmentPhotoMain {
+.apartmentCard:hover .apartmentPhotoMain,
+.apartmentCard.isTouchActive .apartmentPhotoMain {
   opacity: 0;
   transform: scale(1.055);
 }
 
-.apartmentCard:hover .apartmentPhotoHover {
+.apartmentCard:hover .apartmentPhotoHover,
+.apartmentCard.isTouchActive .apartmentPhotoHover {
   opacity: 1;
   transform: scale(1.055);
 }
