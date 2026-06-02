@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import "./App.css";
 
 const images = {
@@ -23,7 +23,6 @@ const airbnbLinks = {
 
 const apartments = [
   {
-    number: "01",
     name: "Libeccio",
     subtitle: "Ampio appartamento per famiglie e gruppi",
     guests: "Fino a 9 ospiti",
@@ -37,7 +36,6 @@ description:
     link: airbnbLinks.Libeccio,
   },
   {
-    number: "02",
     name: "Grecale",
     subtitle: "Eleganza e comfort per soggiorni rilassanti",
     guests: "Fino a 5 ospiti",
@@ -107,9 +105,21 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+  if (menuOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [menuOpen]);
+
   return (
     <main className="page">
-      <header className="nav">
+      <header className={`nav ${menuOpen ? "isMenuOpen" : ""}`}>
         <a href="#" className="brand" onClick={() => setMenuOpen(false)}>
           <strong>NURAS Villa Antonio</strong>
           <span>Santa Maria la Palma</span>
@@ -136,51 +146,70 @@ export default function App() {
 </button>
       </header>
 
-      {menuOpen && (
-  <motion.div
-    className="mobileMenuOverlay"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: 0.25 }}
-  >
-    <motion.nav
-      className="mobileMenu"
-      initial={{ opacity: 0, y: -18 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      {<AnimatePresence>
+  {menuOpen && (
+    <motion.div
+      className="mobileMenuOverlay"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.28 }}
+      onClick={() => setMenuOpen(false)}
     >
-      <div className="mobileMenuTop">
-        <span>Menu</span>
-        <small>Villa Antonio</small>
-      </div>
+      <motion.nav
+        className="mobileMenu"
+        initial={{ opacity: 0, y: 28, scale: 0.96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 18, scale: 0.97 }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="mobileMenuHeader">
+          <div>
+            <span>Menu</span>
+            <small>NURAS Villa Antonio</small>
+          </div>
 
-      <a href="#villa" onClick={() => setMenuOpen(false)}>
-        <span>01</span>
-        La Villa
-      </a>
+          <p>Santa Maria la Palma · Alghero</p>
+        </div>
 
-      <a href="#appartamenti" onClick={() => setMenuOpen(false)}>
-        <span>02</span>
-        Appartamenti
-      </a>
+        <div className="mobileMenuLinks">
+          <a href="#villa" onClick={() => setMenuOpen(false)}>
+            <span>01</span>
+            <strong>La Villa</strong>
+          </a>
 
-      <a href="#servizi" onClick={() => setMenuOpen(false)}>
-        <span>03</span>
-        Servizi
-      </a>
+          <a href="#appartamenti" onClick={() => setMenuOpen(false)}>
+            <span>02</span>
+            <strong>Appartamenti</strong>
+          </a>
 
-      <a href="#posizione" onClick={() => setMenuOpen(false)}>
-        <span>04</span>
-        Posizione
-      </a>
+          <a href="#servizi" onClick={() => setMenuOpen(false)}>
+            <span>03</span>
+            <strong>Servizi</strong>
+          </a>
 
-      <a href="#prenota" onClick={() => setMenuOpen(false)} className="mobileMenuCta">
-        Prenota ora
-      </a>
-    </motion.nav>
-  </motion.div>
-)}
+          <a href="#posizione" onClick={() => setMenuOpen(false)}>
+            <span>04</span>
+            <strong>Posizione</strong>
+          </a>
+        </div>
+
+        <div className="mobileMenuBottom">
+          <a
+            href="#prenota"
+            onClick={() => setMenuOpen(false)}
+            className="mobileMenuCta"
+          >
+            Prenota il soggiorno
+          </a>
+
+          <p>Appartamenti indipendenti vicino Alghero.</p>
+        </div>
+      </motion.nav>
+    </motion.div>
+  )}
+</AnimatePresence>}
 
       <Hero />
 
