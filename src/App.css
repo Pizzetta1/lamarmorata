@@ -391,11 +391,12 @@ button {
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.apartmentCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 34px 90px rgba(29, 38, 31, 0.16);
+@media (hover: hover) and (pointer: fine) {
+  .apartmentCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 34px 90px rgba(29, 38, 31, 0.16);
+  }
 }
-
 .apartmentImage {
   position: relative;
   height: 390px;
@@ -424,16 +425,26 @@ button {
   transform: scale(1.035);
 }
 
-.apartmentCard:hover .apartmentPhotoMain,
 .apartmentCard.isTouchActive .apartmentPhotoMain {
   opacity: 0;
   transform: scale(1.055);
 }
 
-.apartmentCard:hover .apartmentPhotoHover,
 .apartmentCard.isTouchActive .apartmentPhotoHover {
   opacity: 1;
   transform: scale(1.055);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .apartmentCard:hover .apartmentPhotoMain {
+    opacity: 0;
+    transform: scale(1.055);
+  }
+
+  .apartmentCard:hover .apartmentPhotoHover {
+    opacity: 1;
+    transform: scale(1.055);
+  }
 }
 
 .apartmentImage span {
