@@ -11,7 +11,7 @@ const images = {
   grecale: "/room2-home.jpg",
   grecaleHover: "/room2-hover.jpg",
   detail: "/home-2.jpg",
-  galleryOne: "/villa-home-3.jpg",
+  galleryOne: "/home-3.jpg",
   galleryTwo: "/villa-antonio.jpg",
   galleryThree: "/villa-antonio.jpg",
 };
