@@ -10,7 +10,7 @@ const images = {
   libeccioHover: "/libeccio-hover.jpg",
   grecale: "/grecale-home.jpg",
   grecaleHover: "/grecale-hover.jpg",
-  detail: "/villa-home-2.jpg",
+  detail: "/home-2.jpg",
   galleryOne: "/villa-home-3.jpg",
   galleryTwo: "/villa-antonio.jpg",
   galleryThree: "/villa-antonio.jpg",
