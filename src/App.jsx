@@ -23,40 +23,42 @@ const airbnbLinks = {
 
 const apartments = [
   {
-    name: "Libeccio",
-    subtitle: "Ampio appartamento per famiglie e gruppi",
-    guests: "Fino a 9 ospiti",
-    rooms: "2 camere",
-    beds: "5 posti letto",
-    baths: "2 bagni",
+    name: "Appartamenti Comfort",
+    subtitle: "Spazi pratici per coppie e famiglie",
+    guests: "1 o 2 camere",
+    rooms: "Angolo cottura",
+    beds: "Spazio esterno",
+    baths: "Bagno privato",
     image: images.libeccio,
 hoverImage: images.libeccioHover,
 description:
-      "Una soluzione spaziosa e indipendente, ideale per famiglie e gruppi numerosi che desiderano vivere Villa Antonio con privacy, comfort e ambienti luminosi vicino ad Alghero.",
+      "Appartamenti con angolo cottura, bagno privato e spazi esterni, ideali per chi desidera una vacanza semplice, comoda e indipendente a pochi passi dal mare.",
     link: airbnbLinks.Libeccio,
   },
   {
-    name: "Grecale",
-    subtitle: "Eleganza e comfort per soggiorni rilassanti",
-    guests: "Fino a 5 ospiti",
-    rooms: "2 camere",
-    beds: "3 posti letto",
-    baths: "2 bagni",
+    name: "Appartamenti Vista Mare",
+    subtitle: "Terrazze e panorami sulla costa",
+    guests: "Fino a 3 camere",
+    rooms: "Terrazza",
+    beds: "Possibile vista mare",
+    baths: "Ideale per famiglie",
     image: images.grecale,
 hoverImage: images.grecaleHover,
 description:
-      "Un alloggio accogliente e confortevole, perfetto per famiglie o piccoli gruppi che cercano tranquillità, cura dei dettagli e una posizione comoda per esplorare il territorio.",
+      "Soluzioni pensate per chi cerca più spazio e una posizione panoramica, con terrazze dove rilassarsi e godere dei colori del mare e della natura circostante.",
     link: airbnbLinks.Grecale,
   },
 ];
 
 const services = [
-  "Giardino",
-  "Terrazza",
-  "Wi-Fi gratuito",
-  "Aria condizionata",
-  "Alloggi indipendenti",
-  "Parcheggio privato",
+  "Spiaggia attrezzata",
+  "Ristorante pizzeria",
+  "Bar",
+  "Market",
+  "Angolo cottura",
+  "Terrazze esterne",
+  "Vista mare",
+  "Biglietteria marittima",
 ];
 
 function FadeIn({ children, delay = 0, className = "" }) {
@@ -123,12 +125,12 @@ export default function App() {
     <main className="page">
       <header className={`nav ${isScrolled || menuOpen ? "isScrolled" : ""}`}>
         <a href="#" className="brand" onClick={() => setMenuOpen(false)}>
-          <strong>NURAS Villa Antonio</strong>
-          <span>Santa Maria la Palma</span>
+          <strong>La Marmorata Village</strong>
+          <span>Santa Teresa Gallura</span>
         </a>
 
         <nav className="navLinks">
-          <a href="#villa">La Villa</a>
+          <a href="#villa">Il Residence</a>
           <a href="#appartamenti">Appartamenti</a>
           <a href="#servizi">Servizi</a>
           <a href="#posizione">Posizione</a>
@@ -164,12 +166,12 @@ export default function App() {
     >
       <div className="mobileMenuTop">
         <span>Menu</span>
-        <small>Villa Antonio</small>
+        <small>La Marmorata Village</small>
       </div>
 
       <a href="#villa" onClick={() => setMenuOpen(false)}>
         <span>01</span>
-        La Villa
+        Il Residence
       </a>
 
       <a href="#appartamenti" onClick={() => setMenuOpen(false)}>
@@ -206,12 +208,12 @@ export default function App() {
         <footer className="footer">
           <div className="footerInner">
             <div>
-              <h3>NURAS Villa Antonio</h3>
-              <p>Appartamenti a Santa Maria la Palma, a pochi minuti da Alghero.</p>
+              <h3>La Marmorata Village</h3>
+              <p>Residence sul mare a pochi minuti da Santa Teresa Gallura, nel nord Sardegna.</p>
             </div>
 
             <div className="footerLinks">
-              <a href="#villa">La Villa</a>
+              <a href="#villa">Il Residence</a>
               <a href="#appartamenti">Appartamenti</a>
               <a href="#servizi">Servizi</a>
               <a href="#posizione">Posizione</a>
@@ -239,7 +241,7 @@ function Hero() {
     <section ref={heroRef} className="hero">
       <motion.img
         src={images.hero}
-        alt="Villa Antonio piscina e giardino"
+        alt="La Marmorata Village sul mare della Marmorata"
         className="heroImage"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -255,7 +257,7 @@ function Hero() {
         transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] }}
       >
         <motion.h1 style={{ y: titleY, opacity: titleOpacity }}>
-          Villa Antonio
+          La Marmorata Village
         </motion.h1>
       </motion.div>
     </section>
@@ -268,14 +270,14 @@ function VillaIntro() {
       <div className="container introLayout">
         <FadeIn>
           <div className="introCopy">
-            <p className="kicker">La struttura</p>
+            <p className="kicker">Il residence</p>
             <h2 className="title">
-              Un rifugio privato tra la quiete di Santa Maria la Palma e il mare di Alghero.
+              Un residence immerso nella natura della Gallura, a pochi passi dal mare smeraldo della Marmorata.
             </h2>
             <p className="lead">
-              NURAS Villa Antonio è un complesso di appartamenti indipendenti,
-              pensato per chi cerca spazio, comfort e tranquillità durante il
-              soggiorno nel nord-ovest della Sardegna.
+              La Marmorata Village si trova a pochi minuti da Santa Teresa Gallura,
+              in una posizione riservata e panoramica, a circa 300 metri dalla
+              Spiaggia Marmoratina.
             </p>
           </div>
         </FadeIn>
@@ -283,23 +285,24 @@ function VillaIntro() {
         <FadeIn delay={0.14}>
           <div className="introPanel">
             <p>
-              La proprietà si trova a Santa Maria la Palma, in una posizione
-              riservata e strategica: a pochi minuti da Alghero, dalle spiagge
-              della Riviera del Corallo e a circa 11 km dal Nuraghe di Palmavera.
+              Affacciato su uno dei tratti più suggestivi del nord Sardegna, il residence
+              accoglie gli ospiti in piccoli edifici integrati nel verde e nei colori
+              della Gallura, con appartamenti indipendenti, terrazze esterne e,
+              in molti casi, una splendida vista sul mare.
             </p>
 
             <div className="introStats">
               <div>
-                <strong>2</strong>
-                <span>Alloggi indipendenti</span>
+                <strong>300 m</strong>
+                <span>Dalla Spiaggia Marmoratina</span>
               </div>
               <div>
-                <strong>9</strong>
-                <span>Ospiti max</span>
+                <strong>10 min</strong>
+                <span>Da Santa Teresa Gallura</span>
               </div>
               <div>
-                <strong>11 km</strong>
-                <span>Dal Nuraghe di Palmavera</span>
+                <strong>1-3</strong>
+                <span>Camere disponibili</span>
               </div>
             </div>
           </div>
@@ -308,11 +311,11 @@ function VillaIntro() {
 
       <div className="container introImageGrid">
         <FadeIn delay={0.08} className="introImage large">
-          <img src={images.exterior} alt="Esterni di Villa Antonio" />
+          <img src={images.exterior} alt="Esterni de La Marmorata Village" />
         </FadeIn>
 
         <FadeIn delay={0.2} className="introImage small">
-          <img src={images.detail} alt="Dettaglio degli spazi esterni" />
+          <img src={images.detail} alt="Dettaglio del residence" />
         </FadeIn>
       </div>
     </section>
@@ -337,7 +340,7 @@ function ApartmentsSection() {
           <div className="sectionHeader">
             <p className="kicker">Gli appartamenti</p>
             <h2 className="title">
-              Due soluzioni spaziose, indipendenti e pensate per sentirsi a casa.
+              Soluzioni indipendenti, luminose e pensate per vivere il mare con libertà.
             </h2>
           </div>
         </FadeIn>
@@ -357,7 +360,7 @@ function ApartmentsSection() {
                 <div className="apartmentImage">
                   <img
                     src={apartment.image}
-                    alt={`NURAS Villa Antonio ${apartment.name}`}
+                    alt={`La Marmorata Village ${apartment.name}`}
                     className="apartmentPhoto apartmentPhotoMain"
                   />
 
@@ -373,7 +376,7 @@ function ApartmentsSection() {
                 </div>
 
                 <div className="apartmentBody">
-                  <p className="apartmentLabel">NURAS Villa Antonio</p>
+                  <p className="apartmentLabel">La Marmorata Village</p>
                   <h3>{apartment.name}</h3>
                   <p>{apartment.description}</p>
 
@@ -390,7 +393,7 @@ function ApartmentsSection() {
                     rel="noreferrer"
                     className="simpleLink"
                   >
-                    Verifica disponibilità su Airbnb
+                    Verifica disponibilità
                   </a>
                 </div>
               </article>
@@ -408,9 +411,9 @@ function VillaExperience() {
       <div className="container experienceLayout">
         <FadeIn>
           <div>
-            <p className="kicker light">Comfort & servizi</p>
+            <p className="kicker light">Servizi & comfort</p>
             <h2 className="title lightTitle">
-              Tutto il necessario per un soggiorno lento, comodo e riservato.
+              Tutto il necessario per una vacanza comoda, rilassata e vicina al mare.
             </h2>
           </div>
         </FadeIn>
@@ -418,9 +421,10 @@ function VillaExperience() {
         <FadeIn delay={0.14}>
           <div className="experienceText">
             <p>
-              Ogni alloggio è progettato per offrire autonomia e comfort:
-              ambienti spaziosi, aria condizionata, Wi-Fi gratuito e zone
-              esterne dove vivere la giornata all’aperto.
+              La Marmorata Village offre servizi pensati per rendere il soggiorno semplice
+              e piacevole: ristorante, bar, market, spiagge attrezzate e soluzioni
+              pratiche per vivere ogni giornata senza rinunciare alla libertà di
+              un appartamento indipendente.
             </p>
 
             <div className="serviceList">
@@ -443,34 +447,35 @@ function TerritorySection() {
       <div className="container territoryLayout">
         <FadeIn>
           <div className="territoryImage">
-            <img src={images.galleryOne} alt="Villa Antonio Santa Maria la Palma" />
+            <img src={images.galleryOne} alt="La Marmorata Village Santa Teresa Gallura" />
           </div>
         </FadeIn>
 
         <FadeIn delay={0.14}>
           <div className="territoryContent">
-            <p className="kicker">La località</p>
+            <p className="kicker">La posizione</p>
             <h2 className="title">
-              Santa Maria la Palma: natura, silenzio e Alghero a portata di mano.
+              Tra Santa Teresa Gallura, spiagge dorate e acque color smeraldo.
             </h2>
             <p className="lead">
-              Una base ideale per esplorare il territorio: spiagge, percorsi
-              naturalistici, cantine, borghi e siti archeologici sono facilmente
-              raggiungibili dalla struttura.
+              Il residence si trova in una zona ideale per scoprire il nord Sardegna:
+              Santa Teresa Gallura è raggiungibile in pochi minuti d’auto, mentre
+              le spiagge della Marmorata e della Marmoratina permettono di vivere
+              il mare ogni giorno con estrema comodità.
             </p>
 
             <div className="territoryList">
               <div>
-                <strong>Alghero</strong>
-                <span>Centro storico, porto e ristoranti a pochi minuti.</span>
+                <strong>Spiaggia Marmoratina</strong>
+                <span>Una piccola spiaggia di sabbia dorata, raggiungibile direttamente dall’interno del residence.</span>
               </div>
               <div>
-                <strong>Riviera del Corallo</strong>
-                <span>Spiagge, calette e mare cristallino nelle vicinanze.</span>
+                <strong>Spiaggia La Marmorata</strong>
+                <span>Più ampia e attrezzata, ideale per famiglie, relax e giornate di mare.</span>
               </div>
               <div>
-                <strong>Nuraghe di Palmavera</strong>
-                <span>Uno dei luoghi storici più importanti della zona, a circa 11 km.</span>
+                <strong>Santa Teresa Gallura</strong>
+                <span>Uno dei centri più amati del nord Sardegna, con porto, ristoranti, servizi e collegamenti.</span>
               </div>
             </div>
           </div>
@@ -487,11 +492,11 @@ function BookingSection() {
         <FadeIn>
           <p className="kicker light">Prenota il tuo soggiorno</p>
           <h2 className="title lightTitle">
-            Scegli l’appartamento più adatto al tuo viaggio.
+            Vivi La Marmorata Village, tra mare, natura e comfort.
           </h2>
           <p>
-            Le disponibilità e le tariffe aggiornate sono consultabili dagli
-            annunci ufficiali Airbnb di Libeccio e Grecale.
+            Scegli la soluzione più adatta alla tua vacanza e scopri disponibilità,
+            servizi e tariffe aggiornate per il tuo soggiorno nel nord Sardegna.
           </p>
         </FadeIn>
 
@@ -506,7 +511,7 @@ function BookingSection() {
               >
                 <span>{apartment.guests}</span>
                 <strong>{apartment.name}</strong>
-                <small>Apri annuncio Airbnb →</small>
+                <small>Scopri disponibilità →</small>
               </a>
             </FadeIn>
           ))}
@@ -515,4 +520,3 @@ function BookingSection() {
     </section>
   );
 }
-
