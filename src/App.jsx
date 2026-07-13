@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import "./App.css";
 
 const images = {
-  hero: "/villa-antonio.jpg",
+  hero: "/lamarmorata.jpg",
   exterior: "/villa-home-1.jpg",
   libeccio: "/libeccio-home.jpg",
   libeccioHover: "/libeccio-hover.jpg",
