@@ -5,7 +5,7 @@ import "./App.css";
 
 const images = {
   hero: "/lamarmorata.jpg",
-  exterior: "/villa-home-1.jpg",
+  exterior: "/home-1.jpg",
   libeccio: "/libeccio-home.jpg",
   libeccioHover: "/libeccio-hover.jpg",
   grecale: "/grecale-home.jpg",
